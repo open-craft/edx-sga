@@ -284,6 +284,8 @@ class StaffGradedAssignmentXBlock(XBlock):
                 if not submission:
                     continue
                 user = user_by_anonymous_id(student.student_id)
+                if not user:
+                    continue
                 module, created = StudentModule.objects.get_or_create(
                     course_id=self.course_id,
                     module_state_key=self.location,
